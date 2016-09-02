@@ -6,8 +6,8 @@
   "dependencies": {
     "line-by-line": "^0.1.5",
     "request": "^2.74.0",
-    "url": "",
-    "request": ""
+    "url": "0.11.0",
+    "request": "2.74.0"
 
   },
   "devDependencies": {},
