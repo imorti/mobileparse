@@ -7,7 +7,7 @@
     "line-by-line": "^0.1.5",
     "request": "^2.74.0",
     "url": "2.15.8",
-    "request": "2.15.8"
+    "request": ""
 
   },
   "devDependencies": {},
