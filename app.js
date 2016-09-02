@@ -9,6 +9,8 @@ var url = require('url');
 var request = require('request');
 var http = require('http');
 
+var date = new Date(Date.UTC(2012, 11, 12, 3, 0, 0));
+
   lr = new lineReader('example_files.txt');
 
   lr.on('error', function(err) {
@@ -22,7 +24,14 @@ var http = require('http');
     var parts = url.parse(line, true);
     console.log("host name is: " + url.format(parts.hostname));
 
-    request(line, function(err, response, body) {
+    var options = {
+      url: line,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25'
+      }
+    }
+
+    request(options, function(err, response, body) {
       if (!err && response.statusCode == 200) {
         console.log("received code 200, writing file");
 
@@ -32,8 +41,6 @@ var http = require('http');
 
       }
     });
-
-    // console.log(line);
 
   });
 
