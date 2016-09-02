@@ -18,8 +18,7 @@ var request = require('request');
 
     //parse our url for the file name
     var parts = url.parse(line, true);
-    console.log("host name is: " + url.format(parts.hostname));
-
+    
     //set up options for our request
     var options = {
       url: line,
@@ -29,8 +28,13 @@ var request = require('request');
     }
 
     request(options, function(err, response, body) {
+
+      if (err) {
+        return console.log("Error fetching content from " + parts.hostname, err);
+      }
+
       if (!err && response.statusCode == 200) {
-        console.log("received code 200, writing file");
+        console.log("received code 200 from " + parts.hostname + ", writing file");
 
         var stream = fs.createWriteStream(parts.hostname + ".txt");
 
