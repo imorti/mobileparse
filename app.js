@@ -1,15 +1,11 @@
-//reads a few urls out of a file (attached),
+//     reads a few urls out of a file (attached),
 //   	 For each url: gets the content at that url as it  would be returned on a mobile browser like an iphone (You can look up )
-// 	 Save the content to a file.
+// 	   Save the content to a file.
 
 var fs = require('fs');
 var lineReader = require('line-by-line');
 var url = require('url');
-
 var request = require('request');
-var http = require('http');
-
-var date = new Date(Date.UTC(2012, 11, 12, 3, 0, 0));
 
   lr = new lineReader('example_files.txt');
 
@@ -24,6 +20,7 @@ var date = new Date(Date.UTC(2012, 11, 12, 3, 0, 0));
     var parts = url.parse(line, true);
     console.log("host name is: " + url.format(parts.hostname));
 
+    //set up options for our request
     var options = {
       url: line,
       headers: {
@@ -45,6 +42,5 @@ var date = new Date(Date.UTC(2012, 11, 12, 3, 0, 0));
   });
 
   lr.on('end', function() {
-    //all lines read we're done now
-    console.log('All lines processed. Thanks and have a great day.');
+
   });
